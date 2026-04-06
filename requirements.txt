@@ -1,24 +1,22 @@
-# 语音对话 Pipeline 依赖
+# conversation-engine — full development install
 # -----------------------------------------------------------------------
-# macOS 安装前置: 若 sounddevice 报 PortAudio 错误，执行:
+# macOS: if sounddevice fails with PortAudio error, run first:
 #   brew install portaudio
 # -----------------------------------------------------------------------
 
-# ASR — 阴云 DashScope Paraformer
+# Core (always required)
+openai>=1.30.0
+httpx>=0.27.0
+numpy>=1.26.0
+python-dotenv>=1.0.0
+
+# ASR provider: DashScope Paraformer
 dashscope>=1.20.0
 
-# LLM — DeepSeek (OpenAI-compatible SDK)
-openai>=1.30.0
+# WebSocket server
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+websockets>=12.0
 
-# TTS — MiniMax HTTP 调用
-httpx>=0.27.0
-
-# 音频录制 & 播放
+# CLI audio I/O (local mic + speakers)
 sounddevice>=0.4.7
-numpy>=1.26.0
-
-# VAD（语音活动检测，预编译 wheel，无需手动编译）
-webrtcvad-wheels>=2.0.14
-
-# 环境变量
-python-dotenv>=1.0.0
